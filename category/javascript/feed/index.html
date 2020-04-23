@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>JavaScript &#8211; Cup of Voodoo</title>
+	<atom:link href="http://OFFLINEZIP.wpshocategory/javascript/feed/" rel="self" type="application/rss+xml" />
+	<link>http://OFFLINEZIP.wpsho</link>
+	<description>by Daniel Robert</description>
+	<lastBuildDate>Sun, 06 Jan 2013 23:01:21 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4</generator>
+	<item>
+		<title>JavaScript and Media Queries</title>
+		<link>http://OFFLINEZIP.wpshojavascript-and-media-queries/</link>
+					<comments>http://OFFLINEZIP.wpshojavascript-and-media-queries/#respond</comments>
+		
+		<dc:creator><![CDATA[Dan Robert]]></dc:creator>
+		<pubDate>Wed, 05 Dec 2012 22:14:31 +0000</pubDate>
+				<category><![CDATA[JavaScript]]></category>
+		<guid isPermaLink="false">http://OFFLINEZIP.wpsho?p=711</guid>
+
+					<description><![CDATA[When developing a responsively designed web site, it is likely that you will come across a situation where you will want to selectively execute a JavaScript callback based on a media query comparison. For example, you may want to alter your menu layout for small-screen devices. Or you may wish to load in specific content [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>When developing a responsively designed web site, it is likely that you will come across a situation where you will want to selectively execute a JavaScript callback based on a <a href="https://developer.mozilla.org/en-US/docs/CSS/Media_queries" title="Media Queries" target="_blank">media query</a> comparison. For example, you may want to alter your menu layout for small-screen devices. Or you may wish to load in specific content only on large-screen devices. Luckily, these capabilities are currently available. In this article I will cover a couple methods and show you that this can be done without much trouble at all!</p>
+
+<span id="more-711"></span>
+
+<h3>window.matchMedia()</h3>
+<p><code>window.matchMedia()</code> is a very convenient, native JavaScript method that allows you to check for a match against a CSS media query condition. As <a href="https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia" title="MDN" target="_blank">MDN</a> states, it &#8220;returns a new <code>MediaQueryList</code> object representing the parsed results of the specified media query string&#8221;.</p>
+
+<p>In other words, by simply wrapping a media query in a <code>matchMedia</code> check you are able to execute conditional, view port specific JavaScript code contingent upon wether or not that check returns a match:</p>
+
+<pre class="brush: jscript; title: ; notranslate">
+if (window.matchMedia(&quot;(min-width: 72em)&quot;).matches) {
+	// Code executed only if view port is &gt;= 72em
+} else {
+	// Code executed if view port is &lt; 72em
+}
+</pre>
+
+<p>The <code>matchMedia()</code> method is natively supported in Chrome, Firefox 9+, Safari 5.1+, iOS5+ and Android 3+. For browsers that do not support the method, an excellent polyfill created by Paul Irish, Nicholas Zakas and Scott Jehl is available on <a href="https://github.com/paulirish/matchMedia.js" title="matchMedia.js polyfill" target="_blank">GitHub</a>.</p>
+
+<h3>Enquire.js</h3>
+<p><a href="http://alpha.responsivedesign.is/resources/javascript-and-jquery/enquire.js" title="Enquire.js" target="_blank">Enquire.js</a> is a lightweight JavaScript library that relies on the previously mentioned native <code>window.matchMedia()</code> API. In addition to the functionality provided with the native matchMedia() method, Enquire.js offers some additional capabilities for running media query matches. To list a few:</p>
+
+<ul class="post_list_bullets">
+	<li>The ability to execute callbacks as media queries are both matched and unmatched, based on browser resize and orientation change events</li>
+	<li>Run one-time setup callbacks</li>
+	<li>Unregister a handler, or group of handlers, to perform any necessary cleanup</li>
+	<li>Support for multiple handlers per media query</li>
+	<li>Chain multiple media queries together to be registered with <code>enquire</code></li>
+</ul>
+
+<p>Since this library is based on window.matchMedia(), you will also need to utilize the aforementioned polyfill if you want to support older browsers. While I haven&#8217;t <em>yet</em> used Enquire.js in a production setting, I still think it would definitely be worth your while to give it a look!</p>
+
+<div class="post_refs">
+<h3>References / Resources</h3>
+<ul>
+	<li><a href="https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia" title="MDN" target="_blank">Mozilla Developer Network</a></li>
+	<li><a href="http://alpha.responsivedesign.is/" title="ResponsiveDesign.is" target="_blank">ResponsiveDesign.is</a></li>
+	<li><a href="http://wickynilliams.github.com/enquire.js/" title="Enquire.js" target="_blank">Enquire.js</a></li>
+	<li><a href="https://github.com/paulirish/matchMedia.js" title="matchMedia.js polyfill" target="_blank">matchMedia.js polyfill</a></li>
+</ul>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>http://OFFLINEZIP.wpshojavascript-and-media-queries/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

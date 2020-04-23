@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>WordPress &#8211; Cup of Voodoo</title>
+	<atom:link href="http://OFFLINEZIP.wpshocategory/wordpress/feed/" rel="self" type="application/rss+xml" />
+	<link>http://OFFLINEZIP.wpsho</link>
+	<description>by Daniel Robert</description>
+	<lastBuildDate>Wed, 05 Dec 2012 08:31:04 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4</generator>
+	<item>
+		<title>WordPress Post Revisions</title>
+		<link>http://OFFLINEZIP.wpshowordpress-post-revisions/</link>
+					<comments>http://OFFLINEZIP.wpshowordpress-post-revisions/#respond</comments>
+		
+		<dc:creator><![CDATA[Dan Robert]]></dc:creator>
+		<pubDate>Tue, 26 Jun 2012 07:13:00 +0000</pubDate>
+				<category><![CDATA[WordPress]]></category>
+		<guid isPermaLink="false">http://OFFLINEZIP.wpsho?p=180</guid>
+
+					<description><![CDATA[As of version 2.6, WordPress introduced a feature which autosaves your posts as revisions while you are editing them in the dashboard. While this functionality can be very useful, it can also be a bit of an annoyance. If a single post ends up going through multiple edits or simply takes a while to get [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>As of version 2.6, WordPress introduced a feature which autosaves your posts as revisions while you are editing them in the dashboard. While this functionality can be very useful, it can also be a bit of an annoyance. If a single post ends up going through multiple edits or simply takes a while to get finished, those revisions can add up. I personally don&#8217;t see the need to have billions upon billions (ok, <em>slight</em> exaggeration) of revisions saved for every one of my posts. Additionally, that is just extra information that is getting stored in your database, which you may not need. Disabling this feature or limiting the amount of allowed revisions (which is what I opted for) is actually quite simple. It only takes one line of code in your <code>wp-config.php</code> file.</p>
+
+<pre class="brush: php; title: ; notranslate">
+/** Disables WordPress automatic post revisions. **/
+define('WP_POST_REVISIONS', false);
+
+/** Limits revisions to specified number (second parameter). **/
+define('WP_POST_REVISIONS', 5);
+</pre>
+
+<span id="more-180"></span>
+
+<p>Additionally, posts are autosaved every 60 seconds by default. This can be easily adjusted as well.</p>
+
+<pre class="brush: php; title: ; notranslate">
+/** Adjusts autosave interval to 120 seconds. **/
+define('AUTOSAVE_INTERVAL', 120 );
+</pre>
+
+<p>There are just a few important things to note:</p>
+
+<ul class="post_list_bullets">
+	<li>First, if you should chose to limit your number of allowed revisions, you will still be able to save new revisions after you reach the specified limit. Your oldest revision will simply be removed to make room for your most recent.</li>
+	<li>Next, if you already have existing posts with a bunch of unwanted revisions, this adjustment will not remove them. You will have to run a MySQL query to manually find and delete that information from your database.</li>
+	<li>Lastly, should you choose to utilize any of the above snippets, they must be included BEFORE the line at the bottom of the wp-config file that reads:</li>
+</ul>
+
+<pre class="brush: php; title: ; notranslate">require_once(ABSPATH . 'wp-settings.php'); </pre>
+
+<p>It took me a little while to figure that last one out, as I had my adjustments placed at the very end of the file and wondered why it was not seeming to work.</p>
+
+<p>And that&#8217;s that. Nothing too daunting. Hopefully in the future, WordPress will have the ability to manage this directly through the admin. Until then, it&#8217;s just a line or two of code to add to your <code>wp-config.php</code>.</p>
+
+<div class="post_refs">
+<h3>References / Resources</h3>
+<ul>
+	<li>WordPress Codex &#8211; <a href="http://codex.wordpress.org/Revision_Management" title="WordPress Codex" target="_blank">Revision Management</a></li>
+	<li>Sitepoint &#8211; <a href="http://www.sitepoint.com/configure-wordpress-post-revisions/" title="WordPress Post Revisions" target="_blank">How to Control Post Revisions in WordPress</a></li>
+</ul>
+</div>	]]></content:encoded>
+					
+					<wfw:commentRss>http://OFFLINEZIP.wpshowordpress-post-revisions/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

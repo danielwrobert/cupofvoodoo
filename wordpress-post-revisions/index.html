@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    
+    <title>
+          WordPress Post Revisions - Cup of Voodoo    </title>
+    <meta name="author" content="Daniel Robert">
+    <meta name="copyright" content="Copyright © 2020">
+    <meta name="description" content="Cup of Voodoo, by Daniel Robert">
+
+    <meta property="og:description" content="A blog and portfolio by Daniel Robert.">
+    <meta property="og:image" content="http://cupofvoodoo.com/zimzallabim/contents/uploads/2012/12/facebook-post-icon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+
+    <link rel="shortcut icon" href="../contents/ui/voodoo/favicon.ico">
+    
+
+    
+    <link rel="stylesheet" href="../contents/ui/voodoo/style.css">
+    
+    
+    
+
+    <script type="text/javascript" src="http://use.typekit.com/nyg0rtf.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    
+	<link rel="dns-prefetch" href="//s.w.org">
+
+
+
+<link rel="stylesheet" id="wp-block-library-css" href="../inc/css/dist/block-library/style.min.css" type="text/css" media="all">
+<script type="text/javascript" src="../contents/ui/voodoo/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+
+
+</head>
+
+<body class="post-template-default single single-post postid-180 single-format-standard">
+    <div id="container">
+        <div id="content_wrap">
+            <div class="nav_wrap">
+                <nav>
+                    <ul class="clearfix">
+                        <li class="nav_home"><a href="../index.html" title="Home">Home</a></li>
+                        <li class="nav_about"><a href="../about/index.html" title="About">About</a></li>
+                        <li class="nav_journal"><a href="../journal/index.html" title="journal">Journal</a></li>
+                        <li class="nav_portfolio"><a href="../portfolio/index.html" title="Portfolio">Portfolio</a></li>
+                        <li class="nav_contact"><a href="../contact/index.html" title="Contact">Contact</a></li>    
+                  </ul>
+                </nav>
+            </div>
+
+            <header> 
+                <h1 class="logo">
+                    <img class="icon_main" src="../contents/ui/voodoo/img/logo-icon.png" alt="Home">
+                    <a class="ir" href="../index.html" title="Home">
+                        <img src="../contents/ui/voodoo/img/logo.png" alt="Cup of Voodoo">
+                    </a>
+                </h1>
+            </header>
+            <div id="main" class="clearfix" role="main">
+                <div class="content">
+	
+		<div class="post-180 post type-post status-publish format-standard hentry category-wordpress" id="post-180">
+			
+			<h2>WordPress Post Revisions</h2>
+			
+			<div class="meta">
+	<em>Posted on:</em> June 26th, 2012	<em>by</em> Dan Robert	</div>
+			<div class="entry">
+				
+				<p>As of version 2.6, WordPress introduced a feature which autosaves your posts as revisions while you are editing them in the dashboard. While this functionality can be very useful, it can also be a bit of an annoyance. If a single post ends up going through multiple edits or simply takes a while to get finished, those revisions can add up. I personally don’t see the need to have billions upon billions (ok, <em>slight</em> exaggeration) of revisions saved for every one of my posts. Additionally, that is just extra information that is getting stored in your database, which you may not need. Disabling this feature or limiting the amount of allowed revisions (which is what I opted for) is actually quite simple. It only takes one line of code in your <code>wp-config.php</code> file.</p>
+
+<pre class="brush: php; title: ; notranslate" title="">
+/** Disables WordPress automatic post revisions. **/
+define('WP_POST_REVISIONS', false);
+
+/** Limits revisions to specified number (second parameter). **/
+define('WP_POST_REVISIONS', 5);
+</pre>
+
+<span id="more-180"></span>
+
+<p>Additionally, posts are autosaved every 60 seconds by default. This can be easily adjusted as well.</p>
+
+<pre class="brush: php; title: ; notranslate" title="">
+/** Adjusts autosave interval to 120 seconds. **/
+define('AUTOSAVE_INTERVAL', 120 );
+</pre>
+
+<p>There are just a few important things to note:</p>
+
+<ul class="post_list_bullets">
+	<li>First, if you should chose to limit your number of allowed revisions, you will still be able to save new revisions after you reach the specified limit. Your oldest revision will simply be removed to make room for your most recent.</li>
+	<li>Next, if you already have existing posts with a bunch of unwanted revisions, this adjustment will not remove them. You will have to run a MySQL query to manually find and delete that information from your database.</li>
+	<li>Lastly, should you choose to utilize any of the above snippets, they must be included BEFORE the line at the bottom of the wp-config file that reads:</li>
+</ul>
+
+<pre class="brush: php; title: ; notranslate" title="">require_once(ABSPATH . 'wp-settings.php'); </pre>
+
+<p>It took me a little while to figure that last one out, as I had my adjustments placed at the very end of the file and wondered why it was not seeming to work.</p>
+
+<p>And that’s that. Nothing too daunting. Hopefully in the future, WordPress will have the ability to manage this directly through the admin. Until then, it’s just a line or two of code to add to your <code>wp-config.php</code>.</p>
+
+<div class="post_refs">
+<h3>References / Resources</h3>
+<ul>
+	<li>WordPress Codex – <a href="http://codex.wordpress.org/Revision_Management" title="WordPress Codex" target="_blank">Revision Management</a></li>
+	<li>Sitepoint – <a href="http://www.sitepoint.com/configure-wordpress-post-revisions/" title="WordPress Post Revisions" target="_blank">How to Control Post Revisions in WordPress</a></li>
+</ul>
+</div>	
+								
+				
+			</div>
+			
+						
+		</div>
+
+	
+
+			
+
+	 	
+
+
+<div id="respond">
+
+	<h2>Leave a Reply</h2>
+
+	<div class="cancel-comment-reply">
+		<a rel="nofollow" id="cancel-comment-reply-link" href="/wordpress-post-revisions/#respond" style="display:none;">Click here to cancel reply.</a>	</div>
+
+	
+	<form action="http://OFFLINEZIP.wpsho/wp-comments-post.php" method="post" id="commentform">
+
+		
+			<div>
+				<label for="author">Name (required)</label>
+				<input type="text" name="author" id="author" class="shadowed" value="" size="22" tabindex="1" aria-required="true">
+			</div>
+
+			<div>
+				<label for="email">Mail (will not be published) (required)</label>
+				<input type="text" name="email" id="email" class="shadowed" value="" size="22" tabindex="2" aria-required="true">
+			</div>
+
+			<div>
+				<label for="url">Website</label>
+				<input type="text" name="url" id="url" class="shadowed" value="" size="22" tabindex="3">
+			</div>
+
+		
+		
+
+		<div>
+			<textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea>
+		</div>
+
+		<div>
+			<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment">
+			<input type="hidden" name="comment_post_ID" value="180" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+		</div>
+		
+		<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2d90eb9458"></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="77"></p>
+	</form>
+
+		
+</div>
+
+
+		
+
+                </div> 
+                
+<aside class="clearfix">
+    <div class="social_links">
+        <h2>Find Me Elsewhere</h2>
+        <ul class="elsewhere clearfix">
+            <li><a href="http://feeds.feedburner.com/CupOfVoodoo"><span data-icon=""> </span>RSS</a></li>
+            <li><a href="https://twitter.com/#!/danielwrobert" target="_blank"><span data-icon=""> </span>Twitter</a></li>
+            <li><a href="https://github.com/danielwrobert" target="_blank"><span data-icon=""> </span>GitHub</a></li>
+            <li><a href="https://instagram.com/danielwrobert" target="_blank"><span data-icon=""> </span>Instagram</a></li>
+        </ul>
+    </div>
+
+    <div id="categories-2" class="widget widget_categories"><h2>Categories</h2>		<ul>
+				<li class="cat-item cat-item-17"><a href="../category/apache/index.html">Apache</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../category/javascript/index.html">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../category/os-x/index.html">OS X</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../category/personal/index.html">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../category/resources/index.html">Resources</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../category/unix/index.html">UNIX</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../category/wordpress/index.html">WordPress</a>
+</li>
+		</ul>
+			</div>
+</aside>            </div> 
+        </div> 
+    </div> 
+
+    <footer>
+      <div id="top-strip"> </div>
+            <div id="footer-content">
+              <div id="boxes">
+                <section id="text-2" class="widget widget_text"><h3>Upcoming Events</h3>			<div class="textwidget"><p>Dan is at home in sunny San Diego, CA with no upcoming travel plans.</p></div>
+		</section>
+                                <section>
+                <h3>About Cup of Voodoo</h3>
+                <p>Cup of Voodoo is a blog & portfolio created by
+                Dan Robert -- a front-end web developer
+                living and working in San Diego, CA.</p>
+                <p class="footer_links"><a href="../about/index.html">Read More ››</a></p>
+                <p class="footer_links"><a href="../contents/ui/voodoo/img/resume.pdf">Download Resume ››</a></p>
+                </section>
+                                
+                                <section class="twitter_feed">
+                <h3>Voodoo Tweets</h3>
+                <div><a href="https://twitter.com/#!/danielwrobert" title="Daniel W. Robert Tweets">@danielwrobert</a>:<p id="voodoo_tweets">Hmmm ... Twitter seems to be down at the moment.</p></div>
+                </section>
+                              </div>
+          </div> 
+          <div><p>©2020 Daniel W Robert. All Rights Reserved.</p></div>
+    </footer>
+
+    <script type="text/javascript" src="../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script type="text/javascript" src="../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPhp.js"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://OFFLINEZIP.wpsho/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "http://OFFLINEZIP.wpsho/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/libs/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/plugins.min.js"></script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/script.min.js"></script>
+<script async="async" type="text/javascript" src="../wp-content/plugins/akismet/_inc/form.js"></script>
+
+
+    
+    
+    
+
+
+    <script> // Change UA-XXXXX-X to be your site's ID
+        window._gaq = [['_setAccount','UA-23832336-1'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+    </script>
+
+
+    
+  
+</body>
+</html>

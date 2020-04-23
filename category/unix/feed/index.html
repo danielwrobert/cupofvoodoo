@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>UNIX &#8211; Cup of Voodoo</title>
+	<atom:link href="http://OFFLINEZIP.wpshocategory/unix/feed/" rel="self" type="application/rss+xml" />
+	<link>http://OFFLINEZIP.wpsho</link>
+	<description>by Daniel Robert</description>
+	<lastBuildDate>Wed, 31 Jul 2013 15:22:56 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4</generator>
+	<item>
+		<title>Disable the Character Picker in OS X</title>
+		<link>http://OFFLINEZIP.wpshodisable-the-character-picker-in-os-x/</link>
+					<comments>http://OFFLINEZIP.wpshodisable-the-character-picker-in-os-x/#respond</comments>
+		
+		<dc:creator><![CDATA[Dan Robert]]></dc:creator>
+		<pubDate>Wed, 31 Jul 2013 15:21:37 +0000</pubDate>
+				<category><![CDATA[OS X]]></category>
+		<category><![CDATA[UNIX]]></category>
+		<guid isPermaLink="false">http://OFFLINEZIP.wpsho?p=846</guid>
+
+					<description><![CDATA[OS X 10.7 (Lion) introduced a feature called the Character Picker. This allows you to press-and-hold a key on your keyboard, activating a little popup with the different character options associated with that key. This can be a useful feature for some, as it allows you to visually see all of those additional character options [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>OS X 10.7 (Lion) introduced a feature called the Character Picker. This allows you to press-and-hold a key on your keyboard, activating a little popup with the different character options associated with that key. This can be a useful feature for some, as it allows you to visually see all of those additional character options and not have to know how to otherwise activate each of them. I, however, found that it was more of a hinderance to my workflow. For example, when I am editing my code in VIM or Vintage Mode in Sublime Text, this feature prevents me from holding down the movement keys (h, j, k, l) to navigate. So I decided to disable it.</p>
+
+<span id="more-846"></span>
+
+<p>To do this, open up your Terminal (Applications > Utilities > Terminal) and enter the following command:</p>
+
+<pre class="brush: bash; title: ; notranslate">
+defaults write -g ApplePressAndHoldEnabled -bool false
+</pre>
+
+<p>Now, in order for your changes to kick in, you will have to restart your computer. And that&#8217;s all there is to it &#8211; once your computer reboots, no more Character Picker popup!</p>]]></content:encoded>
+					
+					<wfw:commentRss>http://OFFLINEZIP.wpshodisable-the-character-picker-in-os-x/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Secure Copy Syntax Examples</title>
+		<link>http://OFFLINEZIP.wpshosecure-copy-syntax-examples/</link>
+					<comments>http://OFFLINEZIP.wpshosecure-copy-syntax-examples/#respond</comments>
+		
+		<dc:creator><![CDATA[Dan Robert]]></dc:creator>
+		<pubDate>Mon, 17 Sep 2012 14:47:05 +0000</pubDate>
+				<category><![CDATA[UNIX]]></category>
+		<guid isPermaLink="false">http://OFFLINEZIP.wpsho?p=538</guid>
+
+					<description><![CDATA[Secure Copy (SCP) is a means of securely transferring files between hosts on a network. It is based on the Secure Shell (SSH) protocol. The command line scp program, which is provided in most SSH implementations, is the secure analog of the rcp command. The syntax for scp is typically similar to that of the [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>Secure Copy (SCP) is a means of securely transferring files between hosts on a network. It is based on the Secure Shell (SSH) protocol. The command line <code>scp</code> program, which is provided in most SSH implementations, is the secure analog of the rcp command.</p>
+
+<p>The syntax for <code>scp</code> is typically similar to that of the <code>cp</code> command.</p>
+
+<h3>Examples</h3>
+<p>Copying from a remote host to your local host:</p>
+<pre class="brush: bash; title: ; notranslate">
+# Copy a file
+scp username@remotehost.com:sourcefile.txt /path/to/local/targetfile
+
+# Copy a directory
+scp -r username@remotehost.com:sourcefolder /path/to/local/targetfolder
+</pre>
+
+<span id="more-538"></span>
+
+<p>Copying from your local host to a remote host:</p>
+<pre class="brush: bash; title: ; notranslate">
+# Copy a file
+scp sourcefile.txt username@remotehost.com:/path/to/remote/targetfile
+
+# Copy a directory
+scp -r sourcefolder username@remotehost.com:/path/to/remote/targetfolder
+</pre>
+
+<p>SSH runs over port 22 by default. If your remote host uses a port other than that default, you can specify the port using the <code>-P</code> flag:</p>
+<pre class="brush: bash; title: ; notranslate">
+# Copy a file from your local host to a remote host using port 2222
+scp -P 2222 sourcefile.txt username@remotehost.com:/path/to/remote/targetfile
+</pre>
+
+<div class="post_refs">
+<h3>References / Resources</h3>
+<ul>
+	<li><a href="http://en.wikipedia.org/wiki/Secure_copy" title="Wikipedia - Secure Copy" target="_blank">Wikipedia &#8211; Secure Copy</a></li>
+	<li><a href="http://www.hypexr.org/linux_scp_help.php" title="Example syntax for Secure Copy (scp)" target="_blank">Example syntax for Secure Copy (scp)</a></li>
+</ul>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>http://OFFLINEZIP.wpshosecure-copy-syntax-examples/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Super Fast Find and Replace with Sed</title>
+		<link>http://OFFLINEZIP.wpshosuper-fast-find-and-replace-with-sed/</link>
+					<comments>http://OFFLINEZIP.wpshosuper-fast-find-and-replace-with-sed/#comments</comments>
+		
+		<dc:creator><![CDATA[Dan Robert]]></dc:creator>
+		<pubDate>Mon, 27 Aug 2012 14:15:05 +0000</pubDate>
+				<category><![CDATA[UNIX]]></category>
+		<guid isPermaLink="false">http://OFFLINEZIP.wpsho?p=427</guid>
+
+					<description><![CDATA[Sed is a UNIX stream editor that can be used to filter text files. This can be extremely useful if you have to run a Find and Replace on a string of text across a large file. I find this to be much more efficient than using a Find and Replace feature in a text [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p><code>Sed</code> is a UNIX stream editor that can be used to filter text files. This can be extremely useful if you have to run a Find and Replace on a string of text across a large file. I find this to be much more efficient than using a Find and Replace feature in a text editor. It is much faster (especially on very large files) and you can let it run in a separate Terminal tab without holding up your workflow.</p>
+
+<p>So how does it work? It&#8217;s pretty straightforward. You need to know the location of the file you wish to edit relative to your current directory. You will also need to know the string you are looking to update. The syntax looks something like the following:</p>
+
+<pre class="brush: bash; title: ; notranslate">sed -i “.backup” 's/string-to-find/string-to-replace/g' path/to/file</pre>
+
+<span id="more-427"></span>
+
+<p>See, not too bad! The <code>-i</code> flag accepts an optional parameter, which tells <code>sed</code> to make a duplicate of the target file and append that parameter as an extension to the backup file. Then, <code>sed</code> will run the search and replace on the target file. In the syntax shown above, the <code>-i</code> flag is being passed a parameter of <code>".backup"</code>. If the target file is <code>database.sql</code>, <code>sed</code> will first make a copy named <code>database.sql.backup</code> and then run the string replacement on the original file. If you do not wish to make a backup copy you can simply leave a space after the <code>-i</code> flag. However, if you are on OS X you must include an empty set of quotes after the <code>-i</code> flag. For example:</p>
+
+<pre class="brush: bash; title: ; notranslate">sed -i “” 's/string-to-find/string-to-replace/g' path/to/file</pre>
+
+<p>On a Linux OS, however, the quotes are not needed.</p>
+
+<pre class="brush: bash; title: ; notranslate">sed -i 's/string-to-find/string-to-replace/g' path/to/file</pre>
+
+<p>And that&#8217;s really all there is to it. If you need to do a Find and Replace across a large file but do not want to hold up your workflow in a text editor, you may want to consider popping open a Terminal window and let <code>sed</code> do its magic. I find this process to be much more efficient.</p>
+
+<h3>Bonus Tip</h3>
+<p>For those of you who are not comfortable using the Terminal, you can actually configure shell scripts in TextExpander (a productivity app for OS X). Nettuts+ has <a href="http://net.tutsplus.com/articles/general/textexpander-for-web-developers/" title="TextExpander for Web Developers" target="_blank">a great article</a> on the various usages of the app so I won&#8217;t go into all of that here. In short, you can select the Shell Script content type from the dropdown menu, assign your snippet an abbreviation and input the following script in the content area:</p>
+
+<pre class="brush: bash; title: ; notranslate">
+#! /bin/bash
+
+sed -i “%filltext:name=backup:default=.backup%” 's/%filltext:name=find%/%filltext:name=replace%/g' %filltext:name=file path%
+</pre>
+
+<p>The first line is standard for shell scripts and points to Bash. The next line is the command written in the syntax for <code>sed</code>, as explained earlier. What you see in between the %% symbols represent the TextExpander logic, which sets parameters for the snippet expansion with optional defaults. Once you&#8217;ve set up your snippet will be able to try it out from anywhere on your Desktop (even outside of a text editor). Type “findrep” (or whatever abbreviation you assigned to your snippet) along with the delimiter that you specified (if any). Then, a dialog will popup with a default of <code>".backup"</code> as a parameter to the <code>-i</code> flag. Once you fill in the remaining parameters, press OK, then the Find and Replace script will run!</p>
+
+<div class="post_refs">
+<h3>References / Resources</h3>
+<ul>
+	<li>I would like to thank <a href="http://dmpayton.com" title="Derek Payton">Derek Payton</a> for showing me this superb UNIX magic as I was struggling through an update to a large .sql file. It could have taken me 3 calendar years to complete the task in a text editor on a file that size.</li>
+	<li><a href="http://smilesoftware.com/TextExpander/" title="TextExpander" target="_blank">TextExpander</a> &#8211; $34.99</li>
+</ul>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>http://OFFLINEZIP.wpshosuper-fast-find-and-replace-with-sed/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Viewing Apache Logs with Tail and Grep</title>
+		<link>http://OFFLINEZIP.wpshoviewing-apache-logs-with-tail-and-grep/</link>
+					<comments>http://OFFLINEZIP.wpshoviewing-apache-logs-with-tail-and-grep/#comments</comments>
+		
+		<dc:creator><![CDATA[Dan Robert]]></dc:creator>
+		<pubDate>Tue, 21 Aug 2012 21:16:55 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[UNIX]]></category>
+		<guid isPermaLink="false">http://OFFLINEZIP.wpsho?p=371</guid>
+
+					<description><![CDATA[As a developer, there may be times when you need to monitor what is happening on an Apache server as live HTTP requests are coming in from a web page. In a UNIX environment, you can actually accomplish this quite painlessly through the command line, using the tail and grep commands. Tail is a command [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>As a developer, there may be times when you need to monitor what is happening on an Apache server as live HTTP requests are coming in from a web page. In a UNIX environment, you can actually accomplish this quite painlessly through the command line, using the <code>tail</code> and <code>grep</code> commands. <code>Tail</code> is a command which outputs the last part of a file and the <code>grep</code> utility is used for pattern matching.</p>
+
+<p>First, you will want to locate your Apache logs and <code>cd</code> into that directory. If you are running a local server through MAMP, you can most likely find them in the application folder.</p>
+
+<pre class="brush: bash; title: ; notranslate">cd /Applications/MAMP/logs</pre>
+
+<span id="more-371"></span>
+
+<p>If you are running the Apache server that is preinstalled on OS X, you should be able to find them from the var folder in the root directory.</p>
+
+<pre class="brush: bash; title: ; notranslate">cd /var/log/apache2</pre>
+
+<p>Once you&#8217;ve found where your log files are located, you can monitor them using the <code>tail</code> command, as mentioned above. From the directory where the log files live, run the following command:</p>
+
+<pre class="brush: bash; title: ; notranslate">tail -f apache_access.log</pre>
+
+<p>The <code>-f</code> flag makes the <code>tail</code> command output additional data as it is appended to the log. <code>Tail</code> can also be piped through <code>grep</code> to pattern match and filter your output results. This way you won&#8217;t get such a potentially large output and will be able to pinpoint what you are looking for more easily.</p>
+
+<pre class="brush: bash; title: ; notranslate">tail -f apache_access.log | grep -i someusefulpattern</pre>
+
+<p>The <code>-i</code> flag in the above <code>grep</code> command will ignore case distinctions in both the pattern and the input files. You can also run the manual from the command line for a full list of options on each utility and use whatever variation best suits your scenario.</p>
+
+<p>So there you have it &#8211; with just a short, one line command in your Terminal, you can easily monitor the HTTP requests on your Apache web server as they are happening.</p>]]></content:encoded>
+					
+					<wfw:commentRss>http://OFFLINEZIP.wpshoviewing-apache-logs-with-tail-and-grep/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
