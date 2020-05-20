@@ -76,7 +76,7 @@ $(function() {
 	}
 
 	// Display latest tweet in footer - http://css-tricks.com/snippets/jquery/display-last-tweet/
-	$.getJSON("http://twitter.com/statuses/user_timeline/danielwrobert.json?callback=?", function(data) {
-		$("#voodoo_tweets").html(data[0].text);
-	});
+	// $.getJSON("https://twitter.com/statuses/user_timeline/danielwrobert.json?callback=?", function(data) {
+	// 	$("#voodoo_tweets").html(data[0].text);
+	// });
 });
