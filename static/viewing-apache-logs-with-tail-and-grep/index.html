@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    
+    <title>
+          Viewing Apache Logs with Tail and Grep - Cup of Voodoo    </title>
+    <meta name="author" content="Daniel Robert">
+    <meta name="copyright" content="Copyright © 2020">
+    <meta name="description" content="Cup of Voodoo, by Daniel Robert">
+
+    <meta property="og:description" content="A blog and portfolio by Daniel Robert.">
+    <meta property="og:image" content="../contents/ui/voodoo/facebook-post-icon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+
+	
+
+    <link rel="shortcut icon" href="../contents/ui/voodoo/favicon.ico">
+    
+
+    
+    <link rel="stylesheet" href="../contents/ui/voodoo/style.css">
+    
+    
+    
+
+    <script type="text/javascript" src="https://use.typekit.com/nyg0rtf.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    
+	
+<link rel="dns-prefetch" href="//s.w.org">
+
+
+
+<link rel="stylesheet" id="wp-block-library-css" href="../inc/css/dist/block-library/style.min.css" type="text/css" media="all">
+<script type="text/javascript" src="../contents/ui/voodoo/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+
+
+</head>
+
+<body class="post-template-default single single-post postid-371 single-format-standard">
+    <div id="container">
+        <div id="content_wrap">
+            <div class="nav_wrap">
+                <nav>
+                    <ul class="clearfix">
+                        <li class="nav_home"><a href="../index.html" title="Home">Home</a></li>
+                        <li class="nav_about"><a href="../about/index.html" title="About">About</a></li>
+                        <li class="nav_journal"><a href="../journal/index.html" title="journal">Journal</a></li>
+                        <li class="nav_portfolio"><a href="../portfolio/index.html" title="Portfolio">Portfolio</a></li>
+                        <li class="nav_contact"><a href="../contact/index.html" title="Contact">Contact</a></li>    
+                  </ul>
+                </nav>
+            </div>
+
+            <header> 
+                <h1 class="logo">
+                    <img class="icon_main" src="../contents/ui/voodoo/img/logo-icon.png" alt="Home">
+                    <a class="ir" href="../index.html" title="Home">
+                        <img src="../contents/ui/voodoo/img/logo.png" alt="Cup of Voodoo">
+                    </a>
+                </h1>
+            </header>
+            <div id="main" class="clearfix" role="main">
+                <div class="content">
+	
+		<div class="post-371 post type-post status-publish format-standard hentry category-apache category-unix" id="post-371">
+			
+			<h2>Viewing Apache Logs with Tail and Grep</h2>
+			
+			<div class="meta">
+	<em>Posted on:</em> August 21st, 2012	<em>by</em> Dan Robert	</div>
+			<div class="entry">
+				
+				<p>As a developer, there may be times when you need to monitor what is happening on an Apache server as live HTTP requests are coming in from a web page. In a UNIX environment, you can actually accomplish this quite painlessly through the command line, using the <code>tail</code> and <code>grep</code> commands. <code>Tail</code> is a command which outputs the last part of a file and the <code>grep</code> utility is used for pattern matching.</p>
+
+<p>First, you will want to locate your Apache logs and <code>cd</code> into that directory. If you are running a local server through MAMP, you can most likely find them in the application folder.</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">cd /Applications/MAMP/logs</pre>
+
+<span id="more-371"></span>
+
+<p>If you are running the Apache server that is preinstalled on OS X, you should be able to find them from the var folder in the root directory.</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">cd /var/log/apache2</pre>
+
+<p>Once you’ve found where your log files are located, you can monitor them using the <code>tail</code> command, as mentioned above. From the directory where the log files live, run the following command:</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">tail -f apache_access.log</pre>
+
+<p>The <code>-f</code> flag makes the <code>tail</code> command output additional data as it is appended to the log. <code>Tail</code> can also be piped through <code>grep</code> to pattern match and filter your output results. This way you won’t get such a potentially large output and will be able to pinpoint what you are looking for more easily.</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">tail -f apache_access.log | grep -i someusefulpattern</pre>
+
+<p>The <code>-i</code> flag in the above <code>grep</code> command will ignore case distinctions in both the pattern and the input files. You can also run the manual from the command line for a full list of options on each utility and use whatever variation best suits your scenario.</p>
+
+<p>So there you have it – with just a short, one line command in your Terminal, you can easily monitor the HTTP requests on your Apache web server as they are happening.</p>
+								
+				
+			</div>
+			
+						
+		</div>
+
+	
+	
+	<h2 id="comments">One Response</h2>
+
+	<div class="navigation">
+		<div class="next-posts"></div>
+		<div class="prev-posts"></div>
+	</div>
+
+	<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="comment-20">
+				<div id="div-comment-20" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="http://0.gravatar.com/avatar/c2e065937fd11a7fa00c734b49c58189?s=32&d=mm&r=g" srcset="http://0.gravatar.com/avatar/c2e065937fd11a7fa00c734b49c58189?s=64&d=mm&r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Bill</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="../viewing-apache-logs-with-tail-and-grep/#comment-20">
+			August 21, 2012 at 2:18 pm				</a>
+						</div>
+
+		<p>Thanks Dan, enjoyed your post.  I use these commands daily.   They are very useful.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-link" href="../viewing-apache-logs-with-tail-and-grep/index.html" data-commentid="20" data-postid="371" data-belowelement="div-comment-20" data-respondelement="respond" aria-label="Reply to Bill">Reply</a></div>
+				</div>
+				</li>
+	</ol>
+
+	<div class="navigation">
+		<div class="next-posts"></div>
+		<div class="prev-posts"></div>
+	</div>
+	
+ 
+
+<div id="respond">
+
+	<h2>Leave a Reply</h2>
+
+	<div class="cancel-comment-reply">
+		<a rel="nofollow" id="cancel-comment-reply-link" href="/viewing-apache-logs-with-tail-and-grep/#respond" style="display:none;">Click here to cancel reply.</a>	</div>
+
+	
+	<form action="http://OFFLINEZIP.wpsho/wp-comments-post.php" method="post" id="commentform">
+
+		
+			<div>
+				<label for="author">Name (required)</label>
+				<input type="text" name="author" id="author" class="shadowed" value="" size="22" tabindex="1" aria-required="true">
+			</div>
+
+			<div>
+				<label for="email">Mail (will not be published) (required)</label>
+				<input type="text" name="email" id="email" class="shadowed" value="" size="22" tabindex="2" aria-required="true">
+			</div>
+
+			<div>
+				<label for="url">Website</label>
+				<input type="text" name="url" id="url" class="shadowed" value="" size="22" tabindex="3">
+			</div>
+
+		
+		
+
+		<div>
+			<textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea>
+		</div>
+
+		<div>
+			<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment">
+			<input type="hidden" name="comment_post_ID" value="371" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+		</div>
+		
+		<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="41f7f11aa7"></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="114"></p>
+	</form>
+
+		
+</div>
+
+
+		
+
+                </div> 
+                
+<aside class="clearfix">
+    <div class="social_links">
+        <h2>Find Me Elsewhere</h2>
+        <ul class="elsewhere clearfix">
+            <li><a href="http://feeds.feedburner.com/CupOfVoodoo"><span data-icon=""> </span>RSS</a></li>
+            <li><a href="https://twitter.com/#!/danielwrobert" target="_blank"><span data-icon=""> </span>Twitter</a></li>
+            <li><a href="https://github.com/danielwrobert" target="_blank"><span data-icon=""> </span>GitHub</a></li>
+            <li><a href="https://instagram.com/danielwrobert" target="_blank"><span data-icon=""> </span>Instagram</a></li>
+        </ul>
+    </div>
+
+    <div id="categories-2" class="widget widget_categories"><h2>Categories</h2>		<ul>
+				<li class="cat-item cat-item-17"><a href="../category/apache/index.html">Apache</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../category/javascript/index.html">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../category/os-x/index.html">OS X</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../category/personal/index.html">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../category/resources/index.html">Resources</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../category/unix/index.html">UNIX</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../category/wordpress/index.html">WordPress</a>
+</li>
+		</ul>
+			</div>
+</aside>            </div> 
+        </div> 
+    </div> 
+
+    <footer>
+      <div id="top-strip"> </div>
+            <div id="footer-content">
+              <div id="boxes">
+                <section id="text-2" class="widget widget_text"><h3>Upcoming Events</h3>			<div class="textwidget"><p>Dan is at home in sunny San Diego, CA with no upcoming travel plans.</p></div>
+		</section>
+                                <section>
+                <h3>About Cup of Voodoo</h3>
+                <p>Cup of Voodoo is a blog & portfolio created by
+                Dan Robert -- a front-end web developer
+                living and working in San Diego, CA.</p>
+                <p class="footer_links"><a href="../about/index.html">Read More ››</a></p>
+                <p class="footer_links"><a href="../contents/ui/voodoo/img/resume.pdf">Download Resume ››</a></p>
+                </section>
+                                
+                                <section class="twitter_feed">
+                <h3>Voodoo Tweets</h3>
+                <div><a href="https://twitter.com/#!/danielwrobert" title="Daniel W. Robert Tweets">@danielwrobert</a>:<p id="voodoo_tweets">Hmmm ... Twitter seems to be down at the moment.</p></div>
+                </section>
+                              </div>
+          </div> 
+          <div><p>©2020 Daniel W Robert. All Rights Reserved.</p></div>
+    </footer>
+
+    <script type="text/javascript" src="../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script type="text/javascript" src="../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://OFFLINEZIP.wpsho/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "http://OFFLINEZIP.wpsho/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/libs/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/plugins.min.js"></script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/script.min.js"></script>
+<script async="async" type="text/javascript" src="../wp-content/plugins/akismet/_inc/form.js"></script>
+
+
+    
+    
+    
+
+
+    <script> // Change UA-XXXXX-X to be your site's ID
+        window._gaq = [['_setAccount','UA-23832336-1'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+    </script>
+
+
+    
+  
+</body>
+</html>

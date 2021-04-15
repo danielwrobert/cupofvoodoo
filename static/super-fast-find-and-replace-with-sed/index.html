@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    
+    <title>
+          Super Fast Find and Replace with Sed - Cup of Voodoo    </title>
+    <meta name="author" content="Daniel Robert">
+    <meta name="copyright" content="Copyright © 2020">
+    <meta name="description" content="Cup of Voodoo, by Daniel Robert">
+
+    <meta property="og:description" content="A blog and portfolio by Daniel Robert.">
+    <meta property="og:image" content="../contents/ui/voodoo/facebook-post-icon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+
+	
+
+    <link rel="shortcut icon" href="../contents/ui/voodoo/favicon.ico">
+    
+
+    
+    <link rel="stylesheet" href="../contents/ui/voodoo/style.css">
+    
+    
+    
+
+    <script type="text/javascript" src="https://use.typekit.com/nyg0rtf.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    
+	
+<link rel="dns-prefetch" href="//s.w.org">
+
+
+
+<link rel="stylesheet" id="wp-block-library-css" href="../inc/css/dist/block-library/style.min.css" type="text/css" media="all">
+<script type="text/javascript" src="../contents/ui/voodoo/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+
+
+</head>
+
+<body class="post-template-default single single-post postid-427 single-format-standard">
+    <div id="container">
+        <div id="content_wrap">
+            <div class="nav_wrap">
+                <nav>
+                    <ul class="clearfix">
+                        <li class="nav_home"><a href="../index.html" title="Home">Home</a></li>
+                        <li class="nav_about"><a href="../about/index.html" title="About">About</a></li>
+                        <li class="nav_journal"><a href="../journal/index.html" title="journal">Journal</a></li>
+                        <li class="nav_portfolio"><a href="../portfolio/index.html" title="Portfolio">Portfolio</a></li>
+                        <li class="nav_contact"><a href="../contact/index.html" title="Contact">Contact</a></li>    
+                  </ul>
+                </nav>
+            </div>
+
+            <header> 
+                <h1 class="logo">
+                    <img class="icon_main" src="../contents/ui/voodoo/img/logo-icon.png" alt="Home">
+                    <a class="ir" href="../index.html" title="Home">
+                        <img src="../contents/ui/voodoo/img/logo.png" alt="Cup of Voodoo">
+                    </a>
+                </h1>
+            </header>
+            <div id="main" class="clearfix" role="main">
+                <div class="content">
+	
+		<div class="post-427 post type-post status-publish format-standard hentry category-unix" id="post-427">
+			
+			<h2>Super Fast Find and Replace with Sed</h2>
+			
+			<div class="meta">
+	<em>Posted on:</em> August 27th, 2012	<em>by</em> Dan Robert	</div>
+			<div class="entry">
+				
+				<p><code>Sed</code> is a UNIX stream editor that can be used to filter text files. This can be extremely useful if you have to run a Find and Replace on a string of text across a large file. I find this to be much more efficient than using a Find and Replace feature in a text editor. It is much faster (especially on very large files) and you can let it run in a separate Terminal tab without holding up your workflow.</p>
+
+<p>So how does it work? It’s pretty straightforward. You need to know the location of the file you wish to edit relative to your current directory. You will also need to know the string you are looking to update. The syntax looks something like the following:</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sed -i “.backup” 's/string-to-find/string-to-replace/g' path/to/file</pre>
+
+<span id="more-427"></span>
+
+<p>See, not too bad! The <code>-i</code> flag accepts an optional parameter, which tells <code>sed</code> to make a duplicate of the target file and append that parameter as an extension to the backup file. Then, <code>sed</code> will run the search and replace on the target file. In the syntax shown above, the <code>-i</code> flag is being passed a parameter of <code>".backup"</code>. If the target file is <code>database.sql</code>, <code>sed</code> will first make a copy named <code>database.sql.backup</code> and then run the string replacement on the original file. If you do not wish to make a backup copy you can simply leave a space after the <code>-i</code> flag. However, if you are on OS X you must include an empty set of quotes after the <code>-i</code> flag. For example:</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sed -i “” 's/string-to-find/string-to-replace/g' path/to/file</pre>
+
+<p>On a Linux OS, however, the quotes are not needed.</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sed -i 's/string-to-find/string-to-replace/g' path/to/file</pre>
+
+<p>And that’s really all there is to it. If you need to do a Find and Replace across a large file but do not want to hold up your workflow in a text editor, you may want to consider popping open a Terminal window and let <code>sed</code> do its magic. I find this process to be much more efficient.</p>
+
+<h3>Bonus Tip</h3>
+<p>For those of you who are not comfortable using the Terminal, you can actually configure shell scripts in TextExpander (a productivity app for OS X). Nettuts+ has <a href="http://net.tutsplus.com/articles/general/textexpander-for-web-developers/" title="TextExpander for Web Developers" target="_blank">a great article</a> on the various usages of the app so I won’t go into all of that here. In short, you can select the Shell Script content type from the dropdown menu, assign your snippet an abbreviation and input the following script in the content area:</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">
+#! /bin/bash
+
+sed -i “%filltext:name=backup:default=.backup%” 's/%filltext:name=find%/%filltext:name=replace%/g' %filltext:name=file path%
+</pre>
+
+<p>The first line is standard for shell scripts and points to Bash. The next line is the command written in the syntax for <code>sed</code>, as explained earlier. What you see in between the %% symbols represent the TextExpander logic, which sets parameters for the snippet expansion with optional defaults. Once you’ve set up your snippet will be able to try it out from anywhere on your Desktop (even outside of a text editor). Type “findrep” (or whatever abbreviation you assigned to your snippet) along with the delimiter that you specified (if any). Then, a dialog will popup with a default of <code>".backup"</code> as a parameter to the <code>-i</code> flag. Once you fill in the remaining parameters, press OK, then the Find and Replace script will run!</p>
+
+<div class="post_refs">
+<h3>References / Resources</h3>
+<ul>
+	<li>I would like to thank <a href="http://dmpayton.com" title="Derek Payton">Derek Payton</a> for showing me this superb UNIX magic as I was struggling through an update to a large .sql file. It could have taken me 3 calendar years to complete the task in a text editor on a file that size.</li>
+	<li><a href="http://smilesoftware.com/TextExpander/" title="TextExpander" target="_blank">TextExpander</a> – $34.99</li>
+</ul>
+</div>
+								
+				
+			</div>
+			
+						
+		</div>
+
+	
+	
+	<h2 id="comments">One Response</h2>
+
+	<div class="navigation">
+		<div class="next-posts"></div>
+		<div class="prev-posts"></div>
+	</div>
+
+	<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="comment-38">
+				<div id="div-comment-38" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="http://2.gravatar.com/avatar/81e7e0ec056968291d33d74bd6df6deb?s=32&d=mm&r=g" srcset="http://2.gravatar.com/avatar/81e7e0ec056968291d33d74bd6df6deb?s=64&d=mm&r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Scott Denton</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="../super-fast-find-and-replace-with-sed/#comment-38">
+			September 6, 2012 at 9:07 am				</a>
+						</div>
+
+		<p>Mr. Robert!  SED is awesome, and I like the blog!  One of the most powerful aspects of SED and other, similar, editing utilities is their support of regular expressions.  Fun stuff!</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-link" href="../super-fast-find-and-replace-with-sed/index.html" data-commentid="38" data-postid="427" data-belowelement="div-comment-38" data-respondelement="respond" aria-label="Reply to Scott Denton">Reply</a></div>
+				</div>
+				</li>
+	</ol>
+
+	<div class="navigation">
+		<div class="next-posts"></div>
+		<div class="prev-posts"></div>
+	</div>
+	
+ 
+
+<div id="respond">
+
+	<h2>Leave a Reply</h2>
+
+	<div class="cancel-comment-reply">
+		<a rel="nofollow" id="cancel-comment-reply-link" href="/super-fast-find-and-replace-with-sed/#respond" style="display:none;">Click here to cancel reply.</a>	</div>
+
+	
+	<form action="http://OFFLINEZIP.wpsho/wp-comments-post.php" method="post" id="commentform">
+
+		
+			<div>
+				<label for="author">Name (required)</label>
+				<input type="text" name="author" id="author" class="shadowed" value="" size="22" tabindex="1" aria-required="true">
+			</div>
+
+			<div>
+				<label for="email">Mail (will not be published) (required)</label>
+				<input type="text" name="email" id="email" class="shadowed" value="" size="22" tabindex="2" aria-required="true">
+			</div>
+
+			<div>
+				<label for="url">Website</label>
+				<input type="text" name="url" id="url" class="shadowed" value="" size="22" tabindex="3">
+			</div>
+
+		
+		
+
+		<div>
+			<textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea>
+		</div>
+
+		<div>
+			<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment">
+			<input type="hidden" name="comment_post_ID" value="427" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+		</div>
+		
+		<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="e947f4479e"></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="233"></p>
+	</form>
+
+		
+</div>
+
+
+		
+
+                </div> 
+                
+<aside class="clearfix">
+    <div class="social_links">
+        <h2>Find Me Elsewhere</h2>
+        <ul class="elsewhere clearfix">
+            <li><a href="http://feeds.feedburner.com/CupOfVoodoo"><span data-icon=""> </span>RSS</a></li>
+            <li><a href="https://twitter.com/#!/danielwrobert" target="_blank"><span data-icon=""> </span>Twitter</a></li>
+            <li><a href="https://github.com/danielwrobert" target="_blank"><span data-icon=""> </span>GitHub</a></li>
+            <li><a href="https://instagram.com/danielwrobert" target="_blank"><span data-icon=""> </span>Instagram</a></li>
+        </ul>
+    </div>
+
+    <div id="categories-2" class="widget widget_categories"><h2>Categories</h2>		<ul>
+				<li class="cat-item cat-item-17"><a href="../category/apache/index.html">Apache</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../category/javascript/index.html">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../category/os-x/index.html">OS X</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../category/personal/index.html">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../category/resources/index.html">Resources</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../category/unix/index.html">UNIX</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../category/wordpress/index.html">WordPress</a>
+</li>
+		</ul>
+			</div>
+</aside>            </div> 
+        </div> 
+    </div> 
+
+    <footer>
+      <div id="top-strip"> </div>
+            <div id="footer-content">
+              <div id="boxes">
+                <section id="text-2" class="widget widget_text"><h3>Upcoming Events</h3>			<div class="textwidget"><p>Dan is at home in sunny San Diego, CA with no upcoming travel plans.</p></div>
+		</section>
+                                <section>
+                <h3>About Cup of Voodoo</h3>
+                <p>Cup of Voodoo is a blog & portfolio created by
+                Dan Robert -- a front-end web developer
+                living and working in San Diego, CA.</p>
+                <p class="footer_links"><a href="../about/index.html">Read More ››</a></p>
+                <p class="footer_links"><a href="../contents/ui/voodoo/img/resume.pdf">Download Resume ››</a></p>
+                </section>
+                                
+                                <section class="twitter_feed">
+                <h3>Voodoo Tweets</h3>
+                <div><a href="https://twitter.com/#!/danielwrobert" title="Daniel W. Robert Tweets">@danielwrobert</a>:<p id="voodoo_tweets">Hmmm ... Twitter seems to be down at the moment.</p></div>
+                </section>
+                              </div>
+          </div> 
+          <div><p>©2020 Daniel W Robert. All Rights Reserved.</p></div>
+    </footer>
+
+    <script type="text/javascript" src="../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script type="text/javascript" src="../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://OFFLINEZIP.wpsho/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "http://OFFLINEZIP.wpsho/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/libs/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/plugins.min.js"></script>
+<script type="text/javascript" src="../contents/ui/voodoo/js/script.min.js"></script>
+<script async="async" type="text/javascript" src="../wp-content/plugins/akismet/_inc/form.js"></script>
+
+
+    
+    
+    
+
+
+    <script> // Change UA-XXXXX-X to be your site's ID
+        window._gaq = [['_setAccount','UA-23832336-1'],['_trackPageview'],['_trackPageLoadTime']];
+        Modernizr.load({
+            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+    </script>
+
+
+    
+  
+</body>
+</html>
